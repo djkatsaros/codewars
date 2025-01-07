@@ -4,7 +4,9 @@
 Could you give the sum of the perimeters of all the squares in a rectangle when there are n + 1 squares disposed in the same manner as in the drawing:
 */
 
-fn perimeter(mut n: u64) -> u64 {
+
+
+fn perimeter(n: u64) -> u64 {
     /* clever way to do recursion
      (0..n) is an iterator.
      fold ( initital value, closure|a: "accumulator", element|)
@@ -12,7 +14,7 @@ fn perimeter(mut n: u64) -> u64 {
      in the recursion we need to keep track of.
      For ex. for Fib, need 3 entries. a_{n-2}, a{n-1} + a_{n-2}, and a_n + a_{n-1}.
     */
-    let mut m = (0..n).fold((1u64, 1u64, 1u64), |a, _| (a.1, a.0 + a.1, a.1 + a.2)); //.2 * 4
+    let m = (0..n).fold((1u64, 1u64, 1u64), |a, _| (a.1, a.0 + a.1, a.1 + a.2)); //.2 * 4
     println!("({},{},{})", m.0,m.1,m.2);
     m.2 * 4
 }
@@ -39,11 +41,11 @@ fn perimeter(mut n: u64) -> u64 {
  * */
 
 fn dotest(n: u64, exp: u64) -> () {
-    assert_eq!(perimeter(n), exp)
-}
+    assert_eq!(perimeter(n), exp, "test failed perimeter of {} +1 squares is {}", n, exp)
+}   
 
-#[test]
-fn basics_perimeter() {
+fn main() {
+    println!("testing");
     dotest(5, 80);
     dotest(7, 216);
     dotest(20, 114624);
@@ -144,4 +146,7 @@ fn basics_perimeter() {
     dotest(53, 903405734864);
     dotest(67, 761569962836536);
     dotest(42, 4539612676);
+    println!("Passed all tests"); 
 }
+
+
