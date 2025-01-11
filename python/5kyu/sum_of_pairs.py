@@ -48,7 +48,7 @@ def sum_pairs(l, s):
     for i in range(1, len(l)):
         needed = s - l[i]
         if needed in _set:
-            return [needed, l[i]] # once needed is in the set, it means it's earlier in the list than l[i]
+            return [needed, l[i]] # once needed is in the set, it means it's earlier in the list than l[i]. Ensures needed is an el from the list
         else:
             _set.add(l[i])
 
