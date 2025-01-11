@@ -6,14 +6,14 @@ It should remove all values from list a, which are present in list b keeping the
 */
 
 fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+    // Function works by checking if each element el in a is not contained in b. If el is not in b, 
+    // add el to the ans in the order they appeared in a.
     let mut ans = vec![];
     for i in a {
-        if !b.contains(&i) { // if b does not contain (address of) i 
+        if !b.contains(&i) { // if b does not contain (address of) i (we dont want the els of b in the answer)
             ans.push(i);
-
         }
     }
-
     ans
 }
 
