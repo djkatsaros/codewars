@@ -8,6 +8,8 @@ With list [20,37,20,21] and number 1, the result would be [20,37,21].
 fn delete_nth(lst: &[u8], n: usize) -> Vec<u8> {
     let mut out = vec![];
     for l in lst {
+        // convert out to an iter object. Filter (addresses of) n such that n == l, then count the result.
+        // if the count is less than n, push (dereferenced) l into out. 
         if out.iter().filter(|&n| n == l).count() < n {
             out.push(*l);
         }
