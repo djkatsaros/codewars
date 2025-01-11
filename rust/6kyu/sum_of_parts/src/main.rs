@@ -24,12 +24,27 @@ parts_sums(ls) -> [10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 929141
 */
 
 fn parts_sums(ls: &[u64]) -> Vec<u64> {
-    let mut vec = vec![ls.iter().sum()];
+    let mut vec = vec![ls.iter().sum()]; // initialize out vector as a heap (!) with the sum of the inputed list (first entry of the output will be the total sum)
     for item in ls {
-        vec.push(vec[vec.len()-1] - item);
+        vec.push(vec[vec.len()-1] - item); // add to vec the most recently added entry of the vector minus next entry of the inputed list. 
     }
     vec
 }
+/*
+Example:
+ls = [1,2,3,4,5,6]
+loop number  | vec
+------------------
+0            | [21]
+1            | [21, ( 21 - 1 = 20 ) ]
+2            | [21, 20, ( 20 - 2 = 18 ) ]
+3            | [21, 20, 18, ( 18 - 3 = 15 ) ]
+4            | [21, 20, 18, 15, ( 15 - 4 = 11 ) ]
+.            |    .
+.            |    .
+.            |    .
+*/
+
 fn main() {
     println!("Sum of parts kata in rust!");
     println!("Type 'cargo test' to run tests. Add your own tests too");
