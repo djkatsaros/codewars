@@ -8,7 +8,7 @@ It should remove all values from list a, which are present in list b keeping the
 fn array_diff<T: PartialEq>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
     let mut ans = vec![];
     for i in a {
-        if !b.contains(&i) {
+        if !b.contains(&i) { // if b does not contain (address of) i 
             ans.push(i);
 
         }
