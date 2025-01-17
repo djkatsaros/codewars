@@ -1,5 +1,6 @@
 """
 Kata Description:
+
 Some numbers have funny properties. For example:
 
     89 --> 8¹ + 9² = 89 * 1
