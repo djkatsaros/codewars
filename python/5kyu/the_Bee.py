@@ -15,7 +15,7 @@ The function should output a single integer - the number of ways.
 import test
 
 def the_bee(n):
-    
+    # Honestly not sure why this works, super confusing setup...    
     cells = [0] * (2*n + 1)
     cells[n] = 1
     
