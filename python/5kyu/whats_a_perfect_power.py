@@ -73,7 +73,7 @@ def main():
             break
         else:
             test.assert_equals(r[0]**r[1], l, "your pair (" + str(r[0]) + ", "+ str(r[1])+ ") doesn't work for "+ str(l))
-            #break
+            
 
 if __name__ == "__main__":
     main()
