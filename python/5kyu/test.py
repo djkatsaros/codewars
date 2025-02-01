@@ -14,3 +14,9 @@ def assert_equals(a, b, mess: str ="pass"):
     """
     assert a == b, mess 
     print("Passed test: {} == {}".format(a,b)) 
+
+def expect(b: bool, mess: str= "pass"):
+    if b:
+        print("passed test!")
+    else:
+        print(mess)
