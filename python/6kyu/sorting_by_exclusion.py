@@ -15,9 +15,10 @@ import test
 
 def sort_by_exclusion(words):
     arr = words
-
-    def ceil_index(sub, val):
-        l, r = 0, len(sub)-1
+    
+    def sorted_idx(sub, val): # bisction/ binary search.
+        l = 0 
+        r = len(sub)-1
         while l <= r:
             mid = (l + r) // 2
             if sub[mid] >= val:
@@ -25,15 +26,17 @@ def sort_by_exclusion(words):
             else:
                 l = mid + 1
         return l
-
+ 
     sub = [arr[0]]
     for i in range(1, len(arr)):
+        # use sorted_idx fcn to create a maximal sorted subarray. 
         if arr[i] > sub[-1]:
-            sub.append(arr[i])
-        else:
-            sub[ceil_index(sub, arr[i])] = arr[i]
-
-    return len(arr) - len(sub)
+            sub.append(arr[i]) # append value to end of subarray if it is next in order
+        else: 
+            sub[sorted_idx(sub, arr[i])] = arr[i] # insert value at index maintaining the sortedness of subarray
+                                                  # replaces whatever value was there -> maximal sorted.  
+        print(sub, arr)
+    return len(arr) - len(sub) 
 
 def main():
     test.assert_equals(sort_by_exclusion(["M","O","A"]),1, "Remove A")
