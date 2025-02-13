@@ -22,7 +22,12 @@ def count_set_bits(n):
     return ct
 
 def assign(cost):
-    allMask = (1 << len(cost)) # number of bits we need to represent
+    """
+    bit masking in a dp tabulation framework to determine best task alottment.
+    masks will be numbers whose binary repres a_1 a_2 ... a_k has ith bit a_i = 1 if the ith
+    task has been assigned and a_i = 0 if not. 
+    """
+    allMask = (1 << len(cost)) # binary number with bits set to represent all tasks being done
     dp = [sys.maxsize] * allMask # initialize so that min ( dp condns ) always less than default
     
     dp[0] = 0 # init with base case
