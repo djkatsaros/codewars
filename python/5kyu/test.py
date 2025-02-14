@@ -15,6 +15,12 @@ def assert_equals(a, b, mess: str ="pass"):
     assert a == b, mess 
     print("Passed test: {} == {}".format(a,b)) 
 
+def assert_approx_equals(a, b, tol,  mess: str = "pass"):
+    if abs( a - b ) / b <= tol:
+        print("Passed test: {} == {} within tolerance of {}".format(a,b, tol))
+    else:
+        print(f"Failed. {a} differs from {b} by more than the allowed tolerance of {tol}")
+
 def expect(b: bool, mess: str= "pass"):
     if b:
         print("passed test!")

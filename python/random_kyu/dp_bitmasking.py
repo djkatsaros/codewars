@@ -28,15 +28,27 @@ def assign(cost):
     task has been assigned and a_i = 0 if not. 
     """
     allMask = (1 << len(cost)) # binary number with bits set to represent all tasks being done
-    dp = [sys.maxsize] * allMask # initialize so that min ( dp condns ) always less than default
+                               # this means allMask = 0 0 0 ... 0 1 , length = len(cost) = 2^(len(cost)).
+    dp = [maxsize] * allMask # initialize so that min ( dp condns ) always less than default
+                                 # dp[k] is the (current) cost of assigning tasks to k people
+                                 # update with min( current, prev + cost of assigning person k 
+                                 # the jth task
     
     dp[0] = 0 # init with base case
     for mask in range(allMask):
         x = count_set_bits(mask) # number of bits that are set already = the person we are on
         for j in range(len(cost)):
-            if mask & (1 << j) == 0:
-                dp[ mask | ( << j) ] = min( dp[ mask | (1 << j) ], dp[mask] + cost[x][j])
-
+            if mask & (1 << j) == 0: # check that jth bit not assigned to a person. this means 
+                                     # mask doesn't intersect with 0 0 ... 0 1 0 ... 0
+                                     #  `                                   jth 
+                dp[ mask | (1 << j) ] = min( dp[ mask | (1 << j) ], dp[mask] + cost[x][j])
+                # mask | (1 << j) is setting jth bit of mask to be 1 -> assigning jth task
+                #   Assigning this task brings mask to (mask + (1 << j))th person, updating
+                #   total cost of assigning tasks to mask + (1 << j) people.
+                # mask + jth bit entry of dp  being assigned 
+                #   = min(  mask | (1 << j), mask + cost[x][j] )
+                #   = min ( mask after setting jth bit, mask + cost of xth person doing task j)
+                print(mask | (1 << j) , dp[mask | (1 << j)], dp[mask] + cost[x][j] )
     return dp[allMask - 1]
 
 def main():
