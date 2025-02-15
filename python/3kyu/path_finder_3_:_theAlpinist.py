@@ -17,8 +17,6 @@ import test
 
 from queue import PriorityQueue
 
-from queue import PriorityQueue
-
 def path_finder(area):
     topo = []
     for val in area.split('\n'):
