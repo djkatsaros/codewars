@@ -22,7 +22,8 @@ def path_finder(area):
     for val in area.split('\n'):
         topo.append(list(map(int, val)))
 
-    qu = PriorityQueue()
+    qu = PriorityQueue() # use a priority queue to as to always get the lowest cost (cost ,(pos) ) tuple when
+                         # calling get!
     memo = dict()
     m, n = len(topo), len(topo[0])
 
