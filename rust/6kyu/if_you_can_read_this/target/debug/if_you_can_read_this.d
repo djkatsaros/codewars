@@ -1,0 +1,1 @@
+/Users/djkatsaros/Desktop/codewars/rust/6kyu/if_you_can_read_this/target/debug/if_you_can_read_this: /Users/djkatsaros/Desktop/codewars/rust/6kyu/if_you_can_read_this/src/main.rs /Users/djkatsaros/Desktop/codewars/rust/6kyu/if_you_can_read_this/src/preloaded.rs

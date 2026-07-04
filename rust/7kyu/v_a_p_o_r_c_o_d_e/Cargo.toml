@@ -1,0 +1,6 @@
+[package]
+name = "v_a_p_o_r_c_o_d_e"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
